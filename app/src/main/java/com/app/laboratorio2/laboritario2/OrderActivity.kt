@@ -21,7 +21,7 @@ class OrderActivity : AppCompatActivity() {
         val orderListView = findViewById<ListView>(R.id.orderListView)
         orderListView.adapter = orderAdapter
 
-        orderListView.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
+        orderListView.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, _, position, _ ->
             val selectedItem = parent.getItemAtPosition(position) as String
             ApplicationExtendedClass.myMenuOrderObject.del(position) //Deletes product from the order
             // Display the selected item text on Toast
@@ -33,7 +33,8 @@ class OrderActivity : AppCompatActivity() {
 
         btnMakeOrder.setOnClickListener {
             if(orderListView.count != 0){ //There are actually elements in the listView
-                ApplicationExtendedClass.myMenuOrderObject.done()    //Change state of MenuOrder object
+                ApplicationExtendedClass.myMenuOrderObject.done()
+                ApplicationExtendedClass.myMenuOrderObject.clear()//Change state of MenuOrder object
                 orderAdapter.notifyDataSetChanged()    //Refresh ListView items
                 Toast.makeText(this, "Tu pedido se se ha procesado!", Toast.LENGTH_LONG).show()
             } else {

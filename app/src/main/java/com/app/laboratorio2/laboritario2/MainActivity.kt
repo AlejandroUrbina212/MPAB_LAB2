@@ -25,6 +25,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, OrderActivity::class.java))
         }
 
-        //Toast.makeText(this, ApplicationExtendedClass.menu.toString(), Toast.LENGTH_LONG).show()
     }
 }
